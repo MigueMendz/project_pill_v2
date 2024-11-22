@@ -46,7 +46,7 @@ function MedicineForm({ isEditing, onScanRfid }) {
   
   const handleSave = async () => {
     try {
-      const response = await axios.post("http://localhost:8083/medicines/add", form);
+      const response = await axios.post("https://back-pillcare.zapto.org/medicines/add", form);
       alert("Medicamento agregado con éxito");
       console.log(response.data);
     } catch (error) {
