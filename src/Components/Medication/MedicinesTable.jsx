@@ -38,14 +38,14 @@ function Medicines() {
   const handleSubmit = async () => {
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:8083/medicines/update/${form.id_medicamento}`, form);
+        await axios.put(`https://back-pillcare.zapto.org/medicines/update/${form.id_medicamento}`, form);
         alert("Medicamento actualizado exitosamente.");
       } else {
-        await axios.post("http://localhost:8083/medicines/add", form);
+        await axios.post("https://back-pillcare.zapto.org/medicines/add", form);
         alert("Medicamento agregado exitosamente.");
       }
       // Recargar la lista de medicamentos después de guardar
-      const response = await axios.get(`http://localhost:8083/medicines/patient/${patientId}`);
+      const response = await axios.get(`https://back-pillcare.zapto.org/medicines/patient/${patientId}`);
       setMedicines(response.data);
       setForm({
         id_medicamento: "",
@@ -67,7 +67,7 @@ function Medicines() {
     if (!window.confirm("¿Estás seguro de que deseas eliminar este medicamento?")) return;
 
     try {
-      await axios.delete(`http://localhost:8083/medicines/id/${id}`);
+      await axios.delete(`https://back-pillcare.zapto.org/medicines/id/${id}`);
       setMedicines((prev) => prev.filter((medicine) => medicine.id_medicamento !== id));
       alert("Medicamento eliminado exitosamente.");
     } catch (error) {
